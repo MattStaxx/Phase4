@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
         
-    <title>Web Development Blog</title>
+    <title>Bootstrap Project</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,11 +13,9 @@
       crossorigin="anonymous">
   </head>
 
-  <body style="background-image: url(dragon.jpg)">
-    <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #dfecf5;"
-    >
-      <div class="container-fluid">
+  <body style="background-image: url(goodTimes.jpg); background-repeat: no-repeat">
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="index.html">Ming's</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
@@ -27,18 +25,17 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="menu.html">Menu</a>
+              <a class="nav-link active" aria-current="page" href="menu.html"><font color="#dfecf5">Menu</font></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
+              <a class="nav-link" href="contact.html"><font color="#dfecf5">Contact</font></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
+              <a class="nav-link" href="about.html"><font color="#dfecf5">About Us</font></a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="about.html" id="navbarDropdown" role="button" 
-                 data-bs-toggle="dropdown" aria-expanded="false">
-                Navigate To...
+                 data-bs-toggle="dropdown" aria-expanded="false"><font color="#dfecf5">Navigate To...</font>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="menu.html">Menu</a></li>
@@ -46,6 +43,9 @@
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="about.html">About Us</a></li>
               </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
             </li>
           </ul>
           <form class="d-flex">
@@ -56,13 +56,20 @@
         </div>
       </div>
     </nav>
+        <div class="row">
+            <div class="col">
+
+                <p><font color="#dfecf5">Really cool interesting stuff about the restaurant and other welcoming words...</font></p>
+
+
+        <div class="col-12">
+          <div class="card-footer bg-transparent border-dark"><font color="#dfecf5">This is who we are.</font></div>
+        </div>
+    </div>
       <script 
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" 
         crossorigin="anonymous">
       </script>
-      <div class="col-12">
-          <div class="card-footer bg-transparent border-dark">This will be delicious...you've been warned...</div>
-      </div>
   </body>
 </html>
