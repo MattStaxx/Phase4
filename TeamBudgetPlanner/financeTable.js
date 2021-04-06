@@ -1,16 +1,27 @@
 var crudFin = new function() {
 
     this.projects = [
-        {"Deal_Id" : 1, "Project_name" : "Apollo Project", "Project_manager" : "Mary", "Project_cost" : 1000},
-        {"Deal_Id" : 2, "Project_name" : "Hermes Project", "Project_manager" : "Bob", "Project_cost" : 10000},
-        {"Deal_Id" : 3, "Project_name" : "Zeus Project", "Project_manager" : "Jane", "Project_cost" : 100000}
+        {"Deal_Id" : 1, "Project_name" : "Aries Project", "Project_manager" : "Matt", "Project_cost" : 15000},
+        {"Deal_Id" : 2, "Project_name" : "Jupiter Project", "Project_manager" : "Bob", "Project_cost" : 10350},
+        {"Deal_Id" : 3, "Project_name" : "Project Sol", "Project_manager" : "Henry", "Project_cost" : 245750}
     ]
 
     this.col = [];
 
+    // PERFORM ARITMETIC ON Project_cost FIELD TO PRODUCE TOTAL COST OF ALL PROJECTS
+    this.arithmetic = function (m) {
+        var math = m;
+        var total = 0;
+        for(var b = 0; b < this.projects.length; b++) {
+            total += m[b].Project_cost;
+        }
+        console.log(total);
+        return total;
+    }
+
     this.createTable = function () {
 
-        // Extract value for table header.
+        // EXTRACT VALUE FOR TABLE HEADER.
         for (var i = 0; i < this.projects.length; i++) {
             for (var key in this.projects[i]) {
                 if (this.col.indexOf(key) === -1) {
@@ -21,28 +32,26 @@ var crudFin = new function() {
 
         // CREATE A TABLE.
         var table = document.createElement('table');
-        table.setAttribute('id', 'projectsTable');     // Set table id.
+        table.setAttribute('id', 'projectsTable');     // SET TABLE ID.
 
-        var tr = table.insertRow(-1);               // Create a row (for header).
+        var tr = table.insertRow(-1);               // CREATE A ROW FOR HEADER.
 
         for (var h = 0; h < this.col.length; h++) {
-            // Add table header.
+            // ADD A TABLE HEADER.
             var th = document.createElement('th');
             th.innerHTML = this.col[h].replace('_', ' ');
             tr.appendChild(th);
         }
 
-        // Add rows using JSON data.
+        // ADD ROWS USING JSON DATA.
         for (var i = 0; i < this.projects.length; i++) {
 
-            tr = table.insertRow(-1);           // Create a new row.
+            tr = table.insertRow(-1);           // CREATE A NEW ROW FOR JSON DATA.
 
             for (var j = 0; j < this.col.length; j++) {
                 var tabCell = tr.insertCell(-1);
                 tabCell.innerHTML = this.projects[i][this.col[j]];
             }
-
-            // Dynamically create and add elements to table cells with events.
 
             this.td = document.createElement('td');
 
@@ -114,6 +123,19 @@ var crudFin = new function() {
         btNew.setAttribute('onclick', 'crudFin.CreateNew(this)');       // ADD THE BUTTON's 'onclick' EVENT.
         this.td.appendChild(btNew);
 
+        // CREATE AN ADDITIONAL TABLE TO DISPLAY TOTAL COST OF ALL PROJECTS
+        var oBox = document.createElement('table');
+        oBox.setAttribute('id', 'costTable');
+        tr = table.insertRow(-1); 
+        // ADD A TABLE HEADER
+        var th = document.createElement('th');
+        th.innerHTML = 'Total Cost of all Projects';
+        tr.appendChild(th);
+        
+        tr = table.insertRow(-1); 
+        var costCell = tr.insertCell(-1);
+        costCell.innerHTML = this.arithmetic(this.projects);
+
         var div = document.getElementById('container');
         div.innerHTML = '';
         div.appendChild(table);    // ADD THE TABLE TO THE WEB PAGE.
@@ -181,11 +203,10 @@ var crudFin = new function() {
         var activeRow = oButton.parentNode.parentNode.rowIndex;
         var tab = document.getElementById('projectsTable').rows[activeRow];
 
-        // UPDATE myBooks ARRAY WITH VALUES.
+        // UPDATE projects ARRAY WITH VALUES.
         for (i = 1; i < this.col.length; i++) {
             var td = tab.getElementsByTagName("td")[i];
             this.projects[(activeRow - 1)][this.col[i]] = td.childNodes[0].value;      // SAVE THE VALUE.
-            
         }
         this.createTable();     // REFRESH THE TABLE.
     }
@@ -208,16 +229,14 @@ var crudFin = new function() {
                     alert('All fields must contain an appropriate value...');
                     break;
                 }
-            
         }
         obj[this.col[0]] = this.projects.length + 1;     // NEW ID.
 
         if (Object.keys(obj).length > 0) {      // CHECK IF OBJECT IS NOT EMPTY.
-            this.projects.push(obj);             // PUSH (ADD) DATA TO THE JSON ARRAY.
+            this.projects.push(obj);            // PUSH (ADD) DATA TO THE JSON ARRAY.          
             this.createTable();                 // REFRESH THE TABLE.
         }
     }
-
     // ****** OPERATIONS END.
 }
 

@@ -1,17 +1,18 @@
 var crudManage = new function () {
 
     // An array of JSON objects with values.
+    // AN ARRAY OF JSON OBJECTS WITH VALUES.
     this.projects = [
-        {"Deal_Id" : 1, "Client_name" : "Microsoft", "Project_name" : "Apollo Project", "Project_manager" : "Mary", "Project_cost" : 1000},
-        {"Deal_Id" : 2, "Client_name" : "Intel", "Project_name" : "Hermes Project", "Project_manager" : "Bob", "Project_cost" : 10000},
-        {"Deal_Id" : 3, "Client_name" : "Apple", "Project_name" : "Zeus Project", "Project_manager" : "Jane", "Project_cost" : 100000}
+        {"Deal_Id" : 1, "Project_name" : "Aries Project", "Project_manager" : "Matt", "Project_cost" : 15000},
+        {"Deal_Id" : 2, "Project_name" : "Jupiter Project", "Project_manager" : "Bob", "Project_cost" : 10350},
+        {"Deal_Id" : 3, "Project_name" : "Project Sol", "Project_manager" : "Henry", "Project_cost" : 245750}
     ]
 
     this.col = [];
 
     this.createTable = function () {
 
-        // Extract value for table header.
+        // EXTRACT VALUE FOR TABLE HEADER.
         for (var i = 0; i < this.projects.length; i++) {
             for (var key in this.projects[i]) {
                 if (this.col.indexOf(key) === -1) {
@@ -22,28 +23,26 @@ var crudManage = new function () {
 
         // CREATE A TABLE.
         var table = document.createElement('table');
-        table.setAttribute('id', 'projectsTable');     // Seet table id.
+        table.setAttribute('id', 'projectsTable');     // SET TABLE ID.
 
-        var tr = table.insertRow(-1);               // Create a row (for header).
+        var tr = table.insertRow(-1);               // CREATE A ROW FOR HEADER.
 
         for (var h = 0; h < this.col.length; h++) {
-            // Add table header.
+            // ADD A TABLE HEADER.
             var th = document.createElement('th');
             th.innerHTML = this.col[h].replace('_', ' ');
             tr.appendChild(th);
         }
 
-        // Add rows using JSON data.
+        // ADD ROWS USING JSON DATA.
         for (var i = 0; i < this.projects.length; i++) {
 
-            tr = table.insertRow(-1);           // Create a new row.
+            tr = table.insertRow(-1);           // CREATE A NEW ROW.
 
             for (var j = 0; j < this.col.length; j++) {
                 var tabCell = tr.insertCell(-1);
                 tabCell.innerHTML = this.projects[i][this.col[j]];
             }
-
-            // Dynamically create and add elements to table cells with events.
 
             this.td = document.createElement('td');
 
